@@ -9,7 +9,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
+            color: #333;
         }
         .container {
             width: 80%;
@@ -17,43 +18,93 @@
             background: white;
             padding: 20px;
             box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
         }
         h1, h2 {
-            color: #333;
+            color: #0073e6;
         }
         .section {
             margin-bottom: 20px;
+        }
+        .profile {
+            text-align: center;
+        }
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0073e6;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .upload-section {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="profile">
+            <img src="profile.jpg" alt="Foto de Perfil">
             <h1>Tu Nombre</h1>
             <p>Tu Profesión | Ubicación</p>
-        </header>
+        </div>
+        
         <section class="section">
             <h2>Sobre mí</h2>
-            <p>Breve descripción sobre ti y tu experiencia.</p>
+            <textarea placeholder="Escribe sobre ti..."></textarea>
         </section>
+        
         <section class="section">
             <h2>Experiencia</h2>
-            <p><strong>Nombre de la Empresa</strong> - Cargo (Año - Año)</p>
-            <p>Descripción de tus responsabilidades.</p>
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" id="empresa" placeholder="Nombre de la empresa">
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" placeholder="Tu cargo">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" placeholder="Describe tu experiencia..."></textarea>
+            </div>
         </section>
+        
         <section class="section">
             <h2>Educación</h2>
-            <p><strong>Nombre de la Institución</strong> - Grado obtenido (Año)</p>
+            <div class="form-group">
+                <label for="institucion">Institución:</label>
+                <input type="text" id="institucion" placeholder="Nombre de la institución">
+            </div>
+            <div class="form-group">
+                <label for="grado">Grado obtenido:</label>
+                <input type="text" id="grado" placeholder="Tu grado académico">
+            </div>
         </section>
+        
         <section class="section">
             <h2>Habilidades</h2>
-            <ul>
-                <li>Habilidad 1</li>
-                <li>Habilidad 2</li>
-                <li>Habilidad 3</li>
-            </ul>
+            <textarea placeholder="Lista tus habilidades..."></textarea>
+        </section>
+        
+        <section class="section upload-section">
+            <h2>Subir Documentos</h2>
+            <input type="file">
         </section>
     </div>
 </body>
 </html>
-
