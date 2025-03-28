@@ -3,127 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Currículum</title>
+    <title>CV en Línea</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             text-align: center;
-            padding: 1em 0;
-        }
-
-        section {
-            max-width: 800px;
-            margin: 20px auto;
             padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2 {
-            color: #333;
+        .cv-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-
-        .info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .info div {
-            flex: 1;
-            padding: 10px;
-            margin: 0 5px;
-            background-color: #f0f0f0;
-            border-radius: 6px;
-        }
-
         .profile-pic {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 20px;
+            border: 3px solid #6a11cb;
         }
-
-        @media screen and (max-width: 600px) {
-            .info {
-                flex-direction: column;
-            }
-
-            .profile-pic {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
+        input, textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #6a11cb;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Mi Currículum</h1>
-    </header>
+    <div class="cv-container">
+        <input type="file" id="imageUpload" accept="image/*">
+        <br>
+        <img id="profileImage" class="profile-pic" src="" alt="Foto de perfil">
+        <br>
+        <input type="text" id="name" placeholder="Nombre Completo">
+        <input type="text" id="profession" placeholder="Profesión">
+        <textarea id="about" placeholder="Sobre mí"></textarea>
+        <button onclick="saveCV()">Guardar</button>
+    </div>
 
-    <section>
-        <div style="text-align: center;">
-            <img class="profile-pic" src="cv.jpg" alt="foto de perfil">
-        </div>
-    </section>
+    <script>
+        document.getElementById('imageUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
 
-    <section>
-        <h2>Datos Personales</h2>
-        <div class="info">
-            <div>
-                <h3>Nombre</h3>
-                <p>ERICK FERNANDO ESPAÑA RUIZ</p>
-            </div>
-            <div>
-                <h3>Correo Electrónico</h3>
-                <p>erick.españa@galileo.com</p>
-            </div>
-            <div>
-                <h3>Teléfono</h3>
-                <p>(502) 55156206</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Experiencia Laboral</h2>
-        <div>
-            <h3>Desarrollador Web</h3>
-            <p>PRODUCTOS ROCHE GUATEMALA | Fecha de inicio 06/10/2024 - Fecha de fin ACTUALMENTE</p>
-            <ul>
-                <li>Tecnico informatico IT, Soporte y atencion al cliente a hospitales </li>
-                <li>Más logros y responsabilidades...</li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>Otro Trabajo</h3>
-            <p>CANELLA S.A. - GUATEMALA, GUATEMALA| Fecha de inicio 06/06/2021 - Fecha de fin 30/09/2024 </p>
-            <ul>
-                <li> SERVICIOS A TERCEROS</li>
-                <li>Más logros y responsabilidades...</li>
-            </ul>
-        </div>
-    </section>
-
-    <section>
-        <h2>Educación</h2>
-        <div>
-            <h3>TECNICO EN DESARROLLO DE SOFTWARE</h3>
-            <p>Universidad Galileo - GUATEMALA, GAUTEMALA | Fecha de inicio 27/01/2025 - Fecha de fin 15/01/2027</p>
-            <p>TECNICO EN DESARROLLO DE SOFTWARE</p>
-        </div>
-    </section>
+        function saveCV() {
+            const name = document.getElementById('name').value;
+            const profession = document.getElementById('profession').value;
+            const about = document.getElementById('about').value;
+            alert(`CV Guardado:\nNombre: ${name}\nProfesión: ${profession}\nSobre mí: ${about}`);
+        }
+    </script>
 </body>
 </html>
